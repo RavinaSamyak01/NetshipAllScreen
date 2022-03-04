@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="NetShip">
+  <test thread-count="5" name="NetShipSmoke">
+    <classes>
+      <class name="NetShipPackage.NetShipAll">
+      <methods>
+        <exclude name="ForgetPassword"/>
+        <include name="ActiveOrder"/>
+        <exclude name="RecentDelivery"/>
+        <exclude name="WatchList"/>
+        <exclude name="BasicSearch0"/>
+        <exclude name="BasicSearch1"/>
+        <exclude name="BasicSearch2"/>
+        <exclude name="ShipPackage"/>
+        <exclude name="AllReports"/>
+        <exclude name="AddressBook"/>
+        <exclude name="CreateASN"/>
+        <exclude name="ASNLog"/>
+        <exclude name="ReorderLog"/>
+        <exclude name="FlightView"/>
+        <exclude name="Temp1"/>
+        <exclude name="LookUpShipment"/>
+        <exclude name="ManageBatchOrders"/>
+        <exclude name="ConsigneeAddrImport"/>
+        <exclude name="ViewInvoice"/>
+        <exclude name="UserProfile"/>
+        <exclude name="Documents"/>
+        <exclude name="UserPrefrence0"/>
+        <exclude name="UserPrefrence1"/>
+        <exclude name="OrderPrefrence0"/>
+        <exclude name="ContactUS"/>
+        <exclude name="NewsANDAnnouncements"/>
+      </methods>
+      </class>
+    </classes>
+  </test> <!-- NASmoke -->
+</suite> <!-- NASuite -->

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+  <meta charset='utf-8'>
+  <title>TestNG reports</title>
+
+    <link type="text/css" href="testng-reports1.css" rel="stylesheet" id="ultra" />
+    <link type="text/css" href="testng-reports.css" rel="stylesheet" id="retro" disabled="false"/>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="testng-reports.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type='text/javascript'>
+      google.load('visualization', '1', {packages:['table']});
+      google.setOnLoadCallback(drawTable);
+      var suiteTableInitFunctions = new Array();
+      var suiteTableData = new Array();
+    </script>
+    <!--
+      <script type="text/javascript" src="jquery-ui/js/jquery-ui-1.8.16.custom.min.js"></script>
+     -->
+  </head>
+
+  <body>
+    <div class="top-banner-root">
+      <span class="top-banner-title-font">Test results</span>
+      <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
+      <br/>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
+    </div> <!-- top-banner-root -->
+    <div class="navigator-root">
+      <div class="navigator-suite-header">
+        <span>All suites</span>
+        <a href="#" title="Collapse/expand all the suites" class="collapse-all-link">
+          <img src="collapseall.gif" class="collapse-all-icon">
+          </img> <!-- collapse-all-icon -->
+        </a> <!-- collapse-all-link -->
+      </div> <!-- navigator-suite-header -->
+      <div class="suite">
+        <div class="rounded-window">
+          <div class="suite-header light-rounded-window-top">
+            <a href="#" panel-name="suite-NetShip" class="navigator-link">
+              <span class="suite-name border-failed">NetShip</span>
+            </a> <!-- navigator-link -->
+          </div> <!-- suite-header light-rounded-window-top -->
+          <div class="navigator-suite-content">
+            <div class="suite-section-title">
+              <span>Info</span>
+            </div> <!-- suite-section-title -->
+            <div class="suite-section-content">
+              <ul>
+                <li>
+                  <a href="#" panel-name="test-xml-NetShip" class="navigator-link ">
+                    <span>C:\Users\rprajapati\git\NetShipAllScreen\NetShipAllScreen\testng.xml</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="testlist-NetShip" class="navigator-link ">
+                    <span class="test-stats">1 test</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="group-NetShip" class="navigator-link ">
+                    <span>0 groups</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="times-NetShip" class="navigator-link ">
+                    <span>Times</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="reporter-NetShip" class="navigator-link ">
+                    <span>Reporter output</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="ignored-methods-NetShip" class="navigator-link ">
+                    <span>Ignored methods</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="chronological-NetShip" class="navigator-link ">
+                    <span>Chronological view</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+              </ul>
+            </div> <!-- suite-section-content -->
+            <div class="result-section">
+              <div class="suite-section-title">
+                <span>Results</span>
+              </div> <!-- suite-section-title -->
+              <div class="suite-section-content">
+                <ul>
+                  <li>
+                    <span class="method-stats">1 method, 1 failed,   </span>
+                  </li>
+                  <li>
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-NetShip" class="hide-methods failed suite-NetShip"> (hide)</a> <!-- hide-methods failed suite-NetShip -->
+                      <a href="#" panel-name="suite-NetShip" class="show-methods failed suite-NetShip"> (show)</a> <!-- show-methods failed suite-NetShip -->
+                    </span>
+                    <div class="method-list-content failed suite-NetShip">
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-NetShip" title="NetShipPackage.NetShipAll" class="method navigator-link" hash-for-method="ActiveOrder">ActiveOrder</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content failed suite-NetShip -->
+                  </li>
+                </ul>
+              </div> <!-- suite-section-content -->
+            </div> <!-- result-section -->
+          </div> <!-- navigator-suite-content -->
+        </div> <!-- rounded-window -->
+      </div> <!-- suite -->
+    </div> <!-- navigator-root -->
+    <div class="wrapper">
+      <div class="main-panel-root">
+        <div panel-name="suite-NetShip" class="panel NetShip">
+          <div class="suite-NetShip-class-failed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="failed.png"/>
+              <span class="class-name">NetShipPackage.NetShipAll</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="ActiveOrder">
+                  </a> <!-- ActiveOrder -->
+                  <span class="method-name">ActiveOrder</span>
+                  <div class="stack-trace">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.id: ActiveOrderGrd (tried for 50 second(s) with 500 milliseconds interval)
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:81)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:271)
+	at NetShipPackage.NetShipAll.ActiveOrder(NetShipAll.java:234)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+Caused by: org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.id: ActiveOrderGrd
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.13.0&apos;, revision: &apos;2f0d292&apos;, time: &apos;2018-06-25T15:32:14.902Z&apos;
+System info: host: &apos;SIPL92&apos;, ip: &apos;10.212.130.152&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;16.0.2&apos;
+Driver info: driver.version: unknown
+	at org.openqa.selenium.support.ui.ExpectedConditions.lambda$findElement$0(ExpectedConditions.java:896)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at org.openqa.selenium.support.ui.ExpectedConditions.findElement(ExpectedConditions.java:895)
+	at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:44)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:206)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:202)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:248)
+	... 29 more
+... Removed 27 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-NetShip-class-failed -->
+        </div> <!-- panel NetShip -->
+        <div panel-name="test-xml-NetShip" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">C:\Users\rprajapati\git\NetShipAllScreen\NetShipAllScreen\testng.xml</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <pre>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
+&lt;suite name=&quot;NetShip&quot; guice-stage=&quot;DEVELOPMENT&quot;&gt;
+  &lt;test thread-count=&quot;5&quot; name=&quot;NetShipSmoke&quot;&gt;
+    &lt;classes&gt;
+      &lt;class name=&quot;NetShipPackage.NetShipAll&quot;&gt;
+        &lt;methods&gt;
+          &lt;include name=&quot;ActiveOrder&quot;/&gt;
+          &lt;exclude name=&quot;ForgetPassword&quot;/&gt;
+          &lt;exclude name=&quot;RecentDelivery&quot;/&gt;
+          &lt;exclude name=&quot;WatchList&quot;/&gt;
+          &lt;exclude name=&quot;BasicSearch0&quot;/&gt;
+          &lt;exclude name=&quot;BasicSearch1&quot;/&gt;
+          &lt;exclude name=&quot;BasicSearch2&quot;/&gt;
+          &lt;exclude name=&quot;ShipPackage&quot;/&gt;
+          &lt;exclude name=&quot;AllReports&quot;/&gt;
+          &lt;exclude name=&quot;AddressBook&quot;/&gt;
+          &lt;exclude name=&quot;CreateASN&quot;/&gt;
+          &lt;exclude name=&quot;ASNLog&quot;/&gt;
+          &lt;exclude name=&quot;ReorderLog&quot;/&gt;
+          &lt;exclude name=&quot;FlightView&quot;/&gt;
+          &lt;exclude name=&quot;Temp1&quot;/&gt;
+          &lt;exclude name=&quot;LookUpShipment&quot;/&gt;
+          &lt;exclude name=&quot;ManageBatchOrders&quot;/&gt;
+          &lt;exclude name=&quot;ConsigneeAddrImport&quot;/&gt;
+          &lt;exclude name=&quot;ViewInvoice&quot;/&gt;
+          &lt;exclude name=&quot;UserProfile&quot;/&gt;
+          &lt;exclude name=&quot;Documents&quot;/&gt;
+          &lt;exclude name=&quot;UserPrefrence0&quot;/&gt;
+          &lt;exclude name=&quot;UserPrefrence1&quot;/&gt;
+          &lt;exclude name=&quot;OrderPrefrence0&quot;/&gt;
+          &lt;exclude name=&quot;ContactUS&quot;/&gt;
+          &lt;exclude name=&quot;NewsANDAnnouncements&quot;/&gt;
+        &lt;/methods&gt;
+      &lt;/class&gt; &lt;!-- NetShipPackage.NetShipAll --&gt;
+    &lt;/classes&gt;
+  &lt;/test&gt; &lt;!-- NetShipSmoke --&gt;
+&lt;/suite&gt; &lt;!-- NetShip --&gt;
+            </pre>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="testlist-NetShip" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Tests for NetShip</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <ul>
+              <li>
+                <span class="test-name">NetShipSmoke (1 class)</span>
+              </li>
+            </ul>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="group-NetShip" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Groups for NetShip</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="times-NetShip" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Times for NetShip</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="times-div">
+              <script type="text/javascript">
+suiteTableInitFunctions.push('tableData_NetShip');
+function tableData_NetShip() {
+var data = new google.visualization.DataTable();
+data.addColumn('number', 'Number');
+data.addColumn('string', 'Method');
+data.addColumn('string', 'Class');
+data.addColumn('number', 'Time (ms)');
+data.addRows(1);
+data.setCell(0, 0, 0)
+data.setCell(0, 1, 'ActiveOrder')
+data.setCell(0, 2, 'NetShipPackage.NetShipAll')
+data.setCell(0, 3, 59110);
+window.suiteTableData['NetShip']= { tableData: data, tableDiv: 'times-div-NetShip'}
+return data;
+}
+              </script>
+              <span class="suite-total-time">Total running time: 59 seconds</span>
+              <div id="times-div-NetShip">
+              </div> <!-- times-div-NetShip -->
+            </div> <!-- times-div -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="reporter-NetShip" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Reporter output for NetShip</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="ignored-methods-NetShip" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">25 ignored methods</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">NetShipPackage.NetShipAll</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">Documents</span>
+                <br/>
+                <span class="ignored-method-name">UserPrefrence0</span>
+                <br/>
+                <span class="ignored-method-name">Temp1</span>
+                <br/>
+                <span class="ignored-method-name">BasicSearch1</span>
+                <br/>
+                <span class="ignored-method-name">UserPrefrence1</span>
+                <br/>
+                <span class="ignored-method-name">BasicSearch0</span>
+                <br/>
+                <span class="ignored-method-name">BasicSearch2</span>
+                <br/>
+                <span class="ignored-method-name">ForgetPassword</span>
+                <br/>
+                <span class="ignored-method-name">FlightView</span>
+                <br/>
+                <span class="ignored-method-name">RecentDelivery</span>
+                <br/>
+                <span class="ignored-method-name">OrderPrefrence0</span>
+                <br/>
+                <span class="ignored-method-name">ShipPackage</span>
+                <br/>
+                <span class="ignored-method-name">ASNLog</span>
+                <br/>
+                <span class="ignored-method-name">ContactUS</span>
+                <br/>
+                <span class="ignored-method-name">ManageBatchOrders</span>
+                <br/>
+                <span class="ignored-method-name">AddressBook</span>
+                <br/>
+                <span class="ignored-method-name">LookUpShipment</span>
+                <br/>
+                <span class="ignored-method-name">WatchList</span>
+                <br/>
+                <span class="ignored-method-name">CreateASN</span>
+                <br/>
+                <span class="ignored-method-name">ReorderLog</span>
+                <br/>
+                <span class="ignored-method-name">ViewInvoice</span>
+                <br/>
+                <span class="ignored-method-name">AllReports</span>
+                <br/>
+                <span class="ignored-method-name">UserProfile</span>
+                <br/>
+                <span class="ignored-method-name">ConsigneeAddrImport</span>
+                <br/>
+                <span class="ignored-method-name">NewsANDAnnouncements</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="chronological-NetShip" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Methods in chronological order</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="chronological-class">
+              <div class="chronological-class-name">NetShipPackage.NetShipAll</div> <!-- chronological-class-name -->
+              <div class="configuration-suite before">
+                <span class="method-name">beforeMethod</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- configuration-suite before -->
+              <div class="configuration-test before">
+                <span class="method-name">Login</span>
+                <span class="method-start">2437 ms</span>
+              </div> <!-- configuration-test before -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">ActiveOrder</span>
+                <span class="method-start">66325 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-test after">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">Logout</span>
+                <span class="method-start">125458 ms</span>
+              </div> <!-- configuration-test after -->
+              <div class="configuration-suite after">
+                <span class="method-name">afterMethod</span>
+                <span class="method-start">125638 ms</span>
+              </div> <!-- configuration-suite after -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+      </div> <!-- main-panel-root -->
+    </div> <!-- wrapper -->
+  </body>
+<script type="text/javascript" src="testng-reports2.js"></script>
+</html>
