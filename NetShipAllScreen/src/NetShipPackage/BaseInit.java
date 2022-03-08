@@ -14,6 +14,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
@@ -113,5 +114,75 @@ public class BaseInit {
 
 	public static String getDate(Calendar cal) {
 		return "" + cal.get(Calendar.MONTH) + "/" + (cal.get(Calendar.DATE) + 1) + "/" + cal.get(Calendar.YEAR);
+	}
+
+	public void selectGroupBy() throws InterruptedException {
+		WebDriverWait wait = new WebDriverWait(Driver, 50);
+		Select SelectSort2 = new Select(Driver.findElement(By.id("drpGrouping")));
+		SelectSort2.selectByIndex(1);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h4[@class=\"ng-binding\"]")));
+		String SelectedOp = SelectSort2.getFirstSelectedOption().getText();
+		String value = Driver.findElement(By.xpath("//h4[@class=\"ng-binding\"]")).getText();
+		System.out.println("selected option is==" + SelectedOp);
+		System.out.println("Value of " + SelectedOp + " option is==" + value);
+
+		SelectSort2.selectByIndex(2);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h4[@class=\"ng-binding\"]")));
+		SelectedOp = SelectSort2.getFirstSelectedOption().getText();
+		value = Driver.findElement(By.xpath("//h4[@class=\"ng-binding\"]")).getText();
+		System.out.println("selected option is==" + SelectedOp);
+		System.out.println("Value of " + SelectedOp + " option is==" + value);
+
+		SelectSort2.selectByIndex(3);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h4[@class=\"ng-binding\"]")));
+		SelectedOp = SelectSort2.getFirstSelectedOption().getText();
+		value = Driver.findElement(By.xpath("//h4[@class=\"ng-binding\"]")).getText();
+		System.out.println("selected option is==" + SelectedOp);
+		System.out.println("Value of " + SelectedOp + " option is==" + value);
+
+		SelectSort2.selectByIndex(4);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h4[@class=\"ng-binding\"]")));
+		SelectedOp = SelectSort2.getFirstSelectedOption().getText();
+		value = Driver.findElement(By.xpath("//h4[@class=\"ng-binding\"]")).getText();
+		System.out.println("selected option is==" + SelectedOp);
+		System.out.println("Value of " + SelectedOp + " option is==" + value);
+
+		SelectSort2.selectByIndex(5);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h4[@class=\"ng-binding\"]")));
+		SelectedOp = SelectSort2.getFirstSelectedOption().getText();
+		value = Driver.findElement(By.xpath("//h4[@class=\"ng-binding\"]")).getText();
+		System.out.println("selected option is==" + SelectedOp);
+		System.out.println("Value of " + SelectedOp + " option is==" + value);
+
+		SelectSort2.selectByIndex(6);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h4[@class=\"ng-binding\"]")));
+		SelectedOp = SelectSort2.getFirstSelectedOption().getText();
+		value = Driver.findElement(By.xpath("//h4[@class=\"ng-binding\"]")).getText();
+		System.out.println("selected option is==" + SelectedOp);
+		System.out.println("Value of " + SelectedOp + " option is==" + value);
+
+		SelectSort2.selectByIndex(7);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h4[@class=\"ng-binding\"]")));
+		SelectedOp = SelectSort2.getFirstSelectedOption().getText();
+		value = Driver.findElement(By.xpath("//h4[@class=\"ng-binding\"]")).getText();
+		System.out.println("selected option is==" + SelectedOp);
+		System.out.println("Value of " + SelectedOp + " option is==" + value);
+
+		SelectSort2.selectByIndex(8);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h4[@class=\"ng-binding\"]")));
+		SelectedOp = SelectSort2.getFirstSelectedOption().getText();
+		value = Driver.findElement(By.xpath("//h4[@class=\"ng-binding\"]")).getText();
+		System.out.println("selected option is==" + SelectedOp);
+		System.out.println("Value of " + SelectedOp + " option is==" + value);
+
+		SelectSort2.selectByIndex(9);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h4[@class=\"ng-binding\"]")));
+		SelectedOp = SelectSort2.getFirstSelectedOption().getText();
+		value = Driver.findElement(By.xpath("//h4[@class=\"ng-binding\"]")).getText();
+		System.out.println("selected option is==" + SelectedOp);
+		System.out.println("Value of " + SelectedOp + " option is==" + value);
+
+		SelectSort2.selectByIndex(0);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//h4[@class=\"ng-binding\"]")));
 	}
 }

@@ -104,7 +104,7 @@
                     <div class="method-list-content failed suite-NetShip">
                       <span>
                         <img src="failed.png" width="3%"/>
-                        <a href="#" panel-name="suite-NetShip" title="NetShipPackage.NetShipAll" class="method navigator-link" hash-for-method="ActiveOrder">ActiveOrder</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-NetShip" title="NetShipPackage.NetShipAll" class="method navigator-link" hash-for-method="WatchList">WatchList</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content failed suite-NetShip -->
@@ -127,27 +127,15 @@
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="ActiveOrder">
-                  </a> <!-- ActiveOrder -->
-                  <span class="method-name">ActiveOrder</span>
-                  <div class="stack-trace">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.id: ActiveOrderGrd (tried for 50 second(s) with 500 milliseconds interval)
-	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:81)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:271)
-	at NetShipPackage.NetShipAll.ActiveOrder(NetShipAll.java:234)
+                  <a name="WatchList">
+                  </a> <!-- WatchList -->
+                  <span class="method-name">WatchList</span>
+                  <div class="stack-trace">java.io.FileNotFoundException: D.\DataFiles\NetShipWatchListSTG.xlsx (The system cannot find the path specified)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:211)
+	at java.base/java.io.FileInputStream.&lt;init&gt;(FileInputStream.java:153)
+	at NetShipPackage.NetShipAll.WatchList(NetShipAll.java:968)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-Caused by: org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.id: ActiveOrderGrd
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: &apos;3.13.0&apos;, revision: &apos;2f0d292&apos;, time: &apos;2018-06-25T15:32:14.902Z&apos;
-System info: host: &apos;SIPL92&apos;, ip: &apos;10.212.130.152&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;16.0.2&apos;
-Driver info: driver.version: unknown
-	at org.openqa.selenium.support.ui.ExpectedConditions.lambda$findElement$0(ExpectedConditions.java:896)
-	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
-	at org.openqa.selenium.support.ui.ExpectedConditions.findElement(ExpectedConditions.java:895)
-	at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:44)
-	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:206)
-	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:202)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:248)
-	... 29 more
 ... Removed 27 stack frames
 </div> <!-- stack-trace -->
                 </div> <!-- method-content -->
@@ -168,10 +156,10 @@ Driver info: driver.version: unknown
     &lt;classes&gt;
       &lt;class name=&quot;NetShipPackage.NetShipAll&quot;&gt;
         &lt;methods&gt;
-          &lt;include name=&quot;ActiveOrder&quot;/&gt;
+          &lt;include name=&quot;WatchList&quot;/&gt;
           &lt;exclude name=&quot;ForgetPassword&quot;/&gt;
+          &lt;exclude name=&quot;ActiveOrder&quot;/&gt;
           &lt;exclude name=&quot;RecentDelivery&quot;/&gt;
-          &lt;exclude name=&quot;WatchList&quot;/&gt;
           &lt;exclude name=&quot;BasicSearch0&quot;/&gt;
           &lt;exclude name=&quot;BasicSearch1&quot;/&gt;
           &lt;exclude name=&quot;BasicSearch2&quot;/&gt;
@@ -237,14 +225,14 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'ActiveOrder')
+data.setCell(0, 1, 'WatchList')
 data.setCell(0, 2, 'NetShipPackage.NetShipAll')
-data.setCell(0, 3, 59110);
+data.setCell(0, 3, 156);
 window.suiteTableData['NetShip']= { tableData: data, tableDiv: 'times-div-NetShip'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 59 seconds</span>
+              <span class="suite-total-time">Total running time: 156 ms</span>
               <div id="times-div-NetShip">
               </div> <!-- times-div-NetShip -->
             </div> <!-- times-div -->
@@ -285,9 +273,9 @@ return data;
                 <br/>
                 <span class="ignored-method-name">RecentDelivery</span>
                 <br/>
-                <span class="ignored-method-name">OrderPrefrence0</span>
-                <br/>
                 <span class="ignored-method-name">ShipPackage</span>
+                <br/>
+                <span class="ignored-method-name">OrderPrefrence0</span>
                 <br/>
                 <span class="ignored-method-name">ASNLog</span>
                 <br/>
@@ -297,9 +285,9 @@ return data;
                 <br/>
                 <span class="ignored-method-name">AddressBook</span>
                 <br/>
-                <span class="ignored-method-name">LookUpShipment</span>
+                <span class="ignored-method-name">ActiveOrder</span>
                 <br/>
-                <span class="ignored-method-name">WatchList</span>
+                <span class="ignored-method-name">LookUpShipment</span>
                 <br/>
                 <span class="ignored-method-name">CreateASN</span>
                 <br/>
@@ -332,23 +320,21 @@ return data;
               </div> <!-- configuration-suite before -->
               <div class="configuration-test before">
                 <span class="method-name">Login</span>
-                <span class="method-start">2437 ms</span>
+                <span class="method-start">2794 ms</span>
               </div> <!-- configuration-test before -->
               <div class="test-method">
                 <img src="failed.png">
                 </img>
-                <span class="method-name">ActiveOrder</span>
-                <span class="method-start">66325 ms</span>
+                <span class="method-name">WatchList</span>
+                <span class="method-start">32637 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-test after">
-                <img src="failed.png">
-                </img>
                 <span class="method-name">Logout</span>
-                <span class="method-start">125458 ms</span>
+                <span class="method-start">32807 ms</span>
               </div> <!-- configuration-test after -->
               <div class="configuration-suite after">
                 <span class="method-name">afterMethod</span>
-                <span class="method-start">125638 ms</span>
+                <span class="method-start">36269 ms</span>
               </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

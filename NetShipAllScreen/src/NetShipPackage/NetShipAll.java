@@ -118,6 +118,7 @@ public class NetShipAll extends BaseInit {
 	@Test
 	public void ActiveOrder() throws Exception {
 		WebDriverWait wait = new WebDriverWait(Driver, 50);
+		JavascriptExecutor js = (JavascriptExecutor) Driver;
 		System.out.println("**********Active Order**********");
 		Robot robot = new Robot();
 		// Read data from Excel
@@ -132,72 +133,7 @@ public class NetShipAll extends BaseInit {
 		DataFormatter formatter = new DataFormatter();
 
 		// --Group By dropdown
-		Select SelectSort2 = new Select(Driver.findElement(By.id("drpGrouping")));
-		SelectSort2.selectByIndex(1);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h4[@class=\"ng-binding\"]")));
-		String SelectedOp = SelectSort2.getFirstSelectedOption().getText();
-		String value = Driver.findElement(By.xpath("//h4[@class=\"ng-binding\"]")).getText();
-		System.out.println("selected option is==" + SelectedOp);
-		System.out.println("Value of " + SelectedOp + " option is==" + value);
-
-		SelectSort2.selectByIndex(2);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h4[@class=\"ng-binding\"]")));
-		SelectedOp = SelectSort2.getFirstSelectedOption().getText();
-		value = Driver.findElement(By.xpath("//h4[@class=\"ng-binding\"]")).getText();
-		System.out.println("selected option is==" + SelectedOp);
-		System.out.println("Value of " + SelectedOp + " option is==" + value);
-
-		SelectSort2.selectByIndex(3);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h4[@class=\"ng-binding\"]")));
-		SelectedOp = SelectSort2.getFirstSelectedOption().getText();
-		value = Driver.findElement(By.xpath("//h4[@class=\"ng-binding\"]")).getText();
-		System.out.println("selected option is==" + SelectedOp);
-		System.out.println("Value of " + SelectedOp + " option is==" + value);
-
-		SelectSort2.selectByIndex(4);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h4[@class=\"ng-binding\"]")));
-		SelectedOp = SelectSort2.getFirstSelectedOption().getText();
-		value = Driver.findElement(By.xpath("//h4[@class=\"ng-binding\"]")).getText();
-		System.out.println("selected option is==" + SelectedOp);
-		System.out.println("Value of " + SelectedOp + " option is==" + value);
-
-		SelectSort2.selectByIndex(5);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h4[@class=\"ng-binding\"]")));
-		SelectedOp = SelectSort2.getFirstSelectedOption().getText();
-		value = Driver.findElement(By.xpath("//h4[@class=\"ng-binding\"]")).getText();
-		System.out.println("selected option is==" + SelectedOp);
-		System.out.println("Value of " + SelectedOp + " option is==" + value);
-
-		SelectSort2.selectByIndex(6);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h4[@class=\"ng-binding\"]")));
-		SelectedOp = SelectSort2.getFirstSelectedOption().getText();
-		value = Driver.findElement(By.xpath("//h4[@class=\"ng-binding\"]")).getText();
-		System.out.println("selected option is==" + SelectedOp);
-		System.out.println("Value of " + SelectedOp + " option is==" + value);
-
-		SelectSort2.selectByIndex(7);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h4[@class=\"ng-binding\"]")));
-		SelectedOp = SelectSort2.getFirstSelectedOption().getText();
-		value = Driver.findElement(By.xpath("//h4[@class=\"ng-binding\"]")).getText();
-		System.out.println("selected option is==" + SelectedOp);
-		System.out.println("Value of " + SelectedOp + " option is==" + value);
-
-		SelectSort2.selectByIndex(8);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h4[@class=\"ng-binding\"]")));
-		SelectedOp = SelectSort2.getFirstSelectedOption().getText();
-		value = Driver.findElement(By.xpath("//h4[@class=\"ng-binding\"]")).getText();
-		System.out.println("selected option is==" + SelectedOp);
-		System.out.println("Value of " + SelectedOp + " option is==" + value);
-
-		SelectSort2.selectByIndex(9);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h4[@class=\"ng-binding\"]")));
-		SelectedOp = SelectSort2.getFirstSelectedOption().getText();
-		value = Driver.findElement(By.xpath("//h4[@class=\"ng-binding\"]")).getText();
-		System.out.println("selected option is==" + SelectedOp);
-		System.out.println("Value of " + SelectedOp + " option is==" + value);
-
-		SelectSort2.selectByIndex(0);
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//h4[@class=\"ng-binding\"]")));
+		selectGroupBy();
 
 		// --Sort By dropdown
 		Select SelectSort3 = new Select(Driver.findElement(By.id("drpSorting")));
@@ -209,7 +145,7 @@ public class NetShipAll extends BaseInit {
 
 		SelectSort3.selectByIndex(0);
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		// --Row Count of Excel sheet
 		System.out.println("Row Count ====> " + rcount);
 
@@ -223,20 +159,20 @@ public class NetShipAll extends BaseInit {
 			String SeJob = "PickupId_N" + formatter.formatCellValue(sh0.getRow(i).getCell(1));
 
 			// --Click on Memo
-			// try {
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(MeJob)));
-			Driver.findElement(By.id(MeJob)).click();
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+			try {
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(MeJob)));
+				Driver.findElement(By.id(MeJob)).click();
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
-			// Driver.findElement(By.id("hlkBackToScreen")).click();
-			Driver.navigate().back();
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ActiveOrderGrd")));
-			/*
-			 * } catch (Exception e) { System.out.
-			 * println("There is no Memo Added in Job, Please add Memo first in this Job : "
-			 * + formatter.formatCellValue(sh0.getRow(i).getCell(0))); }
-			 */
+				// Driver.findElement(By.id("hlkBackToScreen")).click();
+				Driver.navigate().back();
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ActiveOrderGrd")));
+
+			} catch (Exception e) {
+				System.out.println("There is no Memo Added in Job, Please add Memo first in this Job : "
+						+ formatter.formatCellValue(sh0.getRow(i).getCell(0)));
+			}
 
 			// --Click on Print button
 			try {
@@ -318,8 +254,8 @@ public class NetShipAll extends BaseInit {
 					System.out.println("*******" + Message2 + "*******");
 				}
 				// --Close Email popup
-				Driver.findElement(By.id("btnclose")).click();
-				Thread.sleep(2000);
+				robot.keyPress(KeyEvent.VK_ESCAPE);
+				Thread.sleep(1000);
 
 				// --Print button
 				Driver.findElement(By.id("idpdfprint")).click();
@@ -337,13 +273,18 @@ public class NetShipAll extends BaseInit {
 				Driver.switchTo().window(winHandleBefore);
 				Thread.sleep(2000);
 
-				Driver.findElement(By.id("btshipdetail")).click();
-				Thread.sleep(15000);
+				// --There is no ShipDetails button
+				/*
+				 * Driver.findElement(By.id("btshipdetail")).click(); Thread.sleep(15000);
+				 * 
+				 * System.out.println("Bill of Lading is working proper."); } catch (Exception
+				 * e) { System.out.println("Bill of Lading is not enable."); System.out.
+				 * println("Please Process CSR Acknowledge OR TC Acknowledge to enable Bill of Lading."
+				 * ); }
+				 */
 
-				System.out.println("Bill of Lading is working proper.");
 			} catch (Exception e) {
-				System.out.println("Bill of Lading is not enable.");
-				System.out.println("Please Process CSR Acknowledge OR TC Acknowledge to enable Bill of Lading.");
+				System.out.println("Email or Print PDF is not working");
 			}
 
 			// Print BOL on Shipment Detail Screen=Not available
@@ -417,13 +358,16 @@ public class NetShipAll extends BaseInit {
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 				wait.until(ExpectedConditions
 						.visibilityOfAllElementsLocatedBy(By.xpath("//*[@ng-form=\"DocDetailsForm\"]")));
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("hlkaddUpload")));
+				Driver.findElement(By.id("hlkaddUpload")).click();
 				wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("txtDocName")));
 				Driver.findElement(By.id("txtDocName")).sendKeys("AUTOPdoshiDocument");
 				// DEV
 				// Driver.findElement(By.id("file")).sendKeys("./DataFiles/Job Upload Doc
 				// DEV.xls");
 				// Staging
-				Driver.findElement(By.id("file")).sendKeys("./DataFiles/Job Upload Doc STG.xls");
+				Driver.findElement(By.id("file")).sendKeys(
+						"C:\\Users\\rprajapati\\git\\NetShipAllScreen\\NetShipAllScreen\\DataFiles\\Job Upload Doc STG.xls");
 				Thread.sleep(2000);
 				Driver.findElement(By.id("btnUpload")).click();
 				wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("successid")));
@@ -434,7 +378,6 @@ public class NetShipAll extends BaseInit {
 					System.out.println(Message6);
 				} else {
 					Message6 = Driver.findElement(By.id("errorid")).getText();
-					SheetMessage = "*****Import Process is not Completed !*****";
 					System.out.println(Message6);
 				}
 
@@ -448,7 +391,8 @@ public class NetShipAll extends BaseInit {
 					Thread.sleep(2000);
 				} else {
 					Driver.findElement(By.id("btnSave")).click();
-					wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+					wait.until(ExpectedConditions
+							.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 					Driver.findElement(By.id("btnsaveandclose")).click();
 					Thread.sleep(2000);
@@ -456,108 +400,94 @@ public class NetShipAll extends BaseInit {
 			} catch (Exception e) {
 				try {
 					Driver.findElement(By.id("iduploadgreen")).click();
-					Thread.sleep(20000);
-
+					wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("tblcollapseExample")));
+					wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("hlkaddUpload")));
 					Driver.findElement(By.id("hlkaddUpload")).click();
 					Driver.findElement(By.id("txtDocName")).sendKeys("AUTOPdoshiDocument");
 					// DEV
 					// Driver.findElement(By.id("file")).sendKeys("./DataFiles/Job Upload Doc
 					// DEV.xls");
 					// Staging
-					Driver.findElement(By.id("file")).sendKeys("./DataFiles/Job Upload Doc STG.xls");
-					Thread.sleep(15000);
+					Driver.findElement(By.id("file")).sendKeys(
+							"C:\\Users\\rprajapati\\git\\NetShipAllScreen\\NetShipAllScreen\\DataFiles\\Job Upload Doc STG.xls");
+					Thread.sleep(2000);
 					Driver.findElement(By.id("btnUpload")).click();
-					Thread.sleep(30000);
+					wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("successid")));
 
 					String Message6 = Driver.findElement(By.id("successid")).getText();
 
-					if (Message6.equals("Import Process Completed !")) {
-						Message6 = "*****Import Process is Completed !*****";
+					if (Message6.equals("Upload/Import Process Completed !")) {
 						System.out.println(Message6);
-						Thread.sleep(5000);
 					} else {
 						Message6 = Driver.findElement(By.id("errorid")).getText();
 						SheetMessage = "*****Import Process is not Completed !*****";
 						System.out.println(Message6);
-						Thread.sleep(5000);
 					}
-					Thread.sleep(5000);
-
 					Driver.findElement(By.id("btnSave")).click();
-					Thread.sleep(5000);
+					wait.until(ExpectedConditions
+							.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 					System.out.println("Upload link is working proper.");
 
 					if (Driver.findElement(By.id("hrefDocError")).isDisplayed()) {
 						Driver.findElement(By.id("btnCancel")).click();
-						Thread.sleep(15000);
+						wait.until(ExpectedConditions
+								.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 					} else {
 						Driver.findElement(By.id("btnSave")).click();
-						Thread.sleep(15000);
+						wait.until(ExpectedConditions
+								.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 						Driver.findElement(By.id("btnsaveandclose")).click();
-						Thread.sleep(15000);
+						Thread.sleep(2000);
 					}
 				} catch (Exception f) {
-					try {
-						Driver.findElement(By.id("hlkUploadDocument")).click();
-						Thread.sleep(20000);
-
-						Driver.findElement(By.id("hlkaddUpload")).click();
-						Driver.findElement(By.id("txtDocName")).sendKeys("AUTOPdoshiDocument");
-						// DEV
-						// Driver.findElement(By.id("file")).sendKeys("./DataFiles/Job Upload Doc
-						// DEV.xls");
-						// Staging
-						Driver.findElement(By.id("file")).sendKeys("./DataFiles/Job Upload Doc STG.xls");
-						Thread.sleep(15000);
-						Driver.findElement(By.id("btnUpload")).click();
-						Thread.sleep(30000);
-
-						String Message6 = Driver.findElement(By.id("successid")).getText();
-
-						if (Message6.equals("Import Process Completed !")) {
-							Message6 = "*****Import Process is Completed !*****";
-							System.out.println(Message6);
-							Thread.sleep(5000);
-						} else {
-							Message6 = Driver.findElement(By.id("errorid")).getText();
-							SheetMessage = "*****Import Process is not Completed !*****";
-							System.out.println(Message6);
-							Thread.sleep(5000);
-						}
-						Thread.sleep(5000);
-
-						Driver.findElement(By.id("btnSave")).click();
-						Thread.sleep(5000);
-
-						System.out.println("Upload link is working proper.");
-
-						if (Driver.findElement(By.id("hrefDocError")).isDisplayed()) {
-							Driver.findElement(By.id("btnCancel")).click();
-							Thread.sleep(15000);
-						} else {
-							Driver.findElement(By.id("btnSave")).click();
-							Thread.sleep(15000);
-
-							Driver.findElement(By.id("btnsaveandclose")).click();
-							Thread.sleep(15000);
-						}
-					} catch (Exception g) {
-						System.out.println("There is no Upload Image display Please check Job manualy.");
-					}
+					// --There is no Upload Document button
+					/*
+					 * try { Driver.findElement(By.id("hlkUploadDocument")).click();
+					 * Thread.sleep(20000);
+					 * 
+					 * Driver.findElement(By.id("hlkaddUpload")).click();
+					 * Driver.findElement(By.id("txtDocName")).sendKeys("AUTOPdoshiDocument"); //
+					 * DEV // Driver.findElement(By.id("file")).sendKeys("./DataFiles/Job Upload Doc
+					 * // DEV.xls"); // Staging Driver.findElement(By.id("file")).
+					 * sendKeys("./DataFiles/Job Upload Doc STG.xls"); Thread.sleep(15000);
+					 * Driver.findElement(By.id("btnUpload")).click(); Thread.sleep(30000);
+					 * 
+					 * String Message6 = Driver.findElement(By.id("successid")).getText();
+					 * 
+					 * if (Message6.equals("Import Process Completed !")) { Message6 =
+					 * "*****Import Process is Completed !*****"; System.out.println(Message6);
+					 * Thread.sleep(5000); } else { Message6 =
+					 * Driver.findElement(By.id("errorid")).getText(); SheetMessage =
+					 * "*****Import Process is not Completed !*****"; System.out.println(Message6);
+					 * Thread.sleep(5000); } Thread.sleep(5000);
+					 * 
+					 * Driver.findElement(By.id("btnSave")).click(); Thread.sleep(5000);
+					 * 
+					 * System.out.println("Upload link is working proper.");
+					 * 
+					 * if (Driver.findElement(By.id("hrefDocError")).isDisplayed()) {
+					 * Driver.findElement(By.id("btnCancel")).click(); Thread.sleep(15000); } else {
+					 * Driver.findElement(By.id("btnSave")).click(); Thread.sleep(15000);
+					 * 
+					 * Driver.findElement(By.id("btnsaveandclose")).click(); Thread.sleep(15000); }
+					 * } catch (Exception g) { System.out.
+					 * println("There is no Upload Image display Please check Job manualy."); }
+					 */
 				}
 			}
 
 			// Click on Watch list
 			try {
 				Driver.findElement(By.id("watchListBlack")).click();
-				Thread.sleep(15000);
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 				System.out.println("Watch list is working proper.");
 			} catch (Exception e) {
 				try {
 					Driver.findElement(By.id("watchListGreen")).click();
-					Thread.sleep(15000);
+					wait.until(ExpectedConditions
+							.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 					System.out.println("Watch list is working proper.");
 				} catch (Exception f) {
 					System.out.println("There is no Watch List Image display Please check Job manualy.");
@@ -566,18 +496,18 @@ public class NetShipAll extends BaseInit {
 
 			try {
 				Driver.findElement(By.id("hlkRefresh")).click();
-				Thread.sleep(15000);
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 			} catch (Exception e) {
 				System.out.println("There is no job on Active Order from Test Data Excel.");
-				Thread.sleep(15000);
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 			}
 
 			try {
-				Driver.findElement(By.id("hlkBackToScreen")).click();
-				Thread.sleep(15000);
+				Driver.findElement(By.id("ActiveOrdTab")).click();
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 			} catch (Exception e) {
 				System.out.println("There is no job on Active Order from Test Data Excel.");
-				Thread.sleep(15000);
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 			}
 		}
 	}
@@ -638,36 +568,8 @@ public class NetShipAll extends BaseInit {
 		SelectSort1.selectByIndex(3);
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
-		Select SelectSort2 = new Select(Driver.findElement(By.id("drpGrouping")));
-		SelectSort2.selectByIndex(1);
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
-
-		SelectSort2.selectByIndex(2);
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
-
-		SelectSort2.selectByIndex(3);
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
-
-		SelectSort2.selectByIndex(4);
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
-
-		SelectSort2.selectByIndex(5);
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
-
-		SelectSort2.selectByIndex(6);
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
-
-		SelectSort2.selectByIndex(7);
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
-
-		SelectSort2.selectByIndex(8);
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
-
-		SelectSort2.selectByIndex(9);
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
-
-		SelectSort2.selectByIndex(0);
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+		// --GroupBy Dropdown
+		selectGroupBy();
 
 		Select SelectSort3 = new Select(Driver.findElement(By.id("drpSorting")));
 		SelectSort3.selectByIndex(1);
@@ -686,14 +588,16 @@ public class NetShipAll extends BaseInit {
 
 			String MeJob = "idmemo_" + formatter.formatCellValue(sh0.getRow(i).getCell(0));
 			String PrJob = "idprint_" + formatter.formatCellValue(sh0.getRow(i).getCell(0));
-			String SeJob = "JobId_" + formatter.formatCellValue(sh0.getRow(i).getCell(0));
+			String SeJob = "PickupId_N" + formatter.formatCellValue(sh0.getRow(i).getCell(1));
 
 			try {
 				Driver.findElement(By.id(MeJob)).click();
-				Thread.sleep(20000);
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
-				Driver.findElement(By.id("hlkBackToScreen")).click();
-				Thread.sleep(5000);
+				// Driver.findElement(By.id("hlkBackToScreen")).click();
+				Driver.navigate().back();
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ActiveOrderGrd")));
 			} catch (Exception e) {
 				System.out.println("There is no Memo Added in Job, Please add Memo first in this Job : "
 						+ formatter.formatCellValue(sh0.getRow(i).getCell(0)));
@@ -701,16 +605,16 @@ public class NetShipAll extends BaseInit {
 
 			try {
 				Driver.findElement(By.id(PrJob)).click();
-				Thread.sleep(5000);
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 				String winHandleBefore2 = Driver.getWindowHandle();
 				for (String winHandle2 : Driver.getWindowHandles()) {
 					Driver.switchTo().window(winHandle2);
 				}
-				Thread.sleep(15000);
+				Thread.sleep(2000);
 
 				Driver.close();
-				Thread.sleep(15000);
+				Thread.sleep(2000);
 				Driver.switchTo().window(winHandleBefore2);
 			} catch (Exception e) {
 				System.out.println("Print Label is not able to work on Click, Please check Manualy with this Job : "
@@ -720,10 +624,11 @@ public class NetShipAll extends BaseInit {
 			List<WebElement> dynamicElement = Driver.findElements(By.id(SeJob));
 			if (dynamicElement.size() != 0) {
 				Driver.findElement(By.id(SeJob)).click();
-				Thread.sleep(20000);
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
-				Driver.findElement(By.id("hlkBackToScreen")).click();
-				Thread.sleep(5000);
+				Driver.navigate().back();
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ActiveOrderGrd")));
 			} else {
 				System.out.println("*********YOUR JOB IS NOT DISPLAY IN LIST.*********");
 			}
@@ -731,175 +636,158 @@ public class NetShipAll extends BaseInit {
 			System.out.println("\n********************************************************************************");
 			System.out.println("\n********************************************************************************");
 
-			Driver.findElement(By.id("txtGlobalSearch")).sendKeys(formatter.formatCellValue(sh0.getRow(i).getCell(1)));
+			Driver.findElement(By.id("txtGlobalSearch")).sendKeys(formatter.formatCellValue(sh0.getRow(i).getCell(0)));
 			Driver.findElement(By.id("txtGlobalSearch")).sendKeys(Keys.ENTER);
-			Thread.sleep(20000);
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 			try {
-				Driver.findElement(By.id("hlkBillofLading")).click();
-				Thread.sleep(5000);
+				// --Not Available
+				/*
+				 * Driver.findElement(By.id("hlkBillofLading")).click(); Thread.sleep(5000);
+				 */
 
-				Driver.findElement(By.id("btemailbol")).click();
-				Thread.sleep(5000);
+				// --Click on Email
+				Driver.findElement(By.id("hlkEmail")).click();
+				wait.until(ExpectedConditions
+						.visibilityOfAllElementsLocatedBy(By.xpath("//*[@class=\"ngdialog-content\"]")));
 
-				Driver.findElement(By.id("txtfrom")).clear();
-				Driver.findElement(By.id("btnSendBOL")).click();
-				Thread.sleep(5000);
+				Driver.findElement(By.id("txtEmail")).clear();
+				Driver.findElement(By.id("btnSendEmail")).click();
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("hrefErr")));
 
-				String Message1 = Driver.findElement(By.id("idValidation")).getText();
+				String Message1 = Driver.findElement(By.id("hrefErr")).getText();
 
-				if (Message1.contains("Address is required.")) {
+				if (Message1.contains("Please Enter Email.")) {
 					System.out.println("\n*******Validation are display Proper.*******");
 					System.out.println("*******" + Message1 + "*******");
-					Thread.sleep(5000);
 				} else {
 					System.out.println("*******Validation are not display Proper.*******");
 					System.out.println("*******" + Message1 + "*******");
-					Thread.sleep(5000);
 				}
 
-				Driver.findElement(By.id("txtfrom")).sendKeys("pdoshi@samyak.com");
-				Driver.findElement(By.id("txtto")).sendKeys("puagent@samyakinfo.com,dlagent@samyakinfo.com");
-				Driver.findElement(By.id("btnSendBOL")).click();
-				Thread.sleep(5000);
-				Driver.findElement(By.xpath("/html/body/div[6]/div/div/div[3]/button[1]")).click();
-				Thread.sleep(15000);
+				// --Send email
+				Driver.findElement(By.id("txtEmail")).sendKeys("Ravina.prajapati@samyak.com");
+				Driver.findElement(By.id("btnSendEmail")).click();
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
-				String Message2 = Driver.findElement(By.id("saveid")).getText();
+				String Message2 = Driver.findElement(By.xpath("//*[@ng-bind=\"emailMessage\"]")).getText();
 
-				if (Message2.equals("B.O.L # successfully send via Email")) {
+				if (Message2.equals("Email successfully sent!")) {
 					System.out.println("*******Message is display Proper.*******");
 					System.out.println("*******" + Message2 + "*******");
 				} else {
 					System.out.println("*******Validation is not display Proper.*******");
 					System.out.println("*******" + Message2 + "*******");
 				}
-				Thread.sleep(5000);
-
-				Driver.findElement(By.id("btfaxbol")).click();
-				Thread.sleep(5000);
-				Driver.findElement(By.id("btnSendFAX")).click();
-				Thread.sleep(5000);
-
-				String Message3 = Driver.findElement(By.id("errorid")).getText();
-
-				if (Message3.equals("Please select atleast one Fax #s.")) {
-					System.out.println("*******Message is display Proper.*******");
-					System.out.println("*******" + Message3 + "*******");
-				} else {
-					System.out.println("*******Validation is not display Proper.*******");
-					System.out.println("*******" + Message3 + "*******");
-				}
-				Thread.sleep(5000);
+				// --Close Email popup
+				robot.keyPress(KeyEvent.VK_ESCAPE);
+				Thread.sleep(1000);
 
 				// FAX Setup Link
 				// Driver.findElement(By.id("hrefFax")).click();
 				// Thread.sleep(15000);
 
-				Driver.findElement(By.id("btprint")).click();
-				Thread.sleep(5000);
+				// --Print
+				Driver.findElement(By.id("idpdfprint")).click();
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 				String winHandleBefore = Driver.getWindowHandle();
 				for (String winHandle : Driver.getWindowHandles()) {
 					Driver.switchTo().window(winHandle);
+					Thread.sleep(2000);
 				}
-				Thread.sleep(15000);
 
 				Driver.close();
-				Thread.sleep(15000);
+
+				// Switch back to original browser (first window)
 				Driver.switchTo().window(winHandleBefore);
+				Thread.sleep(2000);
 
-				Driver.findElement(By.id("btshipdetail")).click();
-				Thread.sleep(15000);
+				// ==There is no ShipDetails
 
-				System.out.println("Bill of Lading is working proper.");
+				/*
+				 * Driver.findElement(By.id("btshipdetail")).click(); Thread.sleep(15000);
+				 * 
+				 * System.out.println("Bill of Lading is working proper."); } catch (Exception
+				 * e) { System.out.println("Bill of Lading is not enable."); System.out.
+				 * println("Please Process CSR Acknowledge OR TC Acknowledge to enable Bill of Lading."
+				 * ); }
+				 */
+
 			} catch (Exception e) {
-				System.out.println("Bill of Lading is not enable.");
-				System.out.println("Please Process CSR Acknowledge OR TC Acknowledge to enable Bill of Lading.");
+				System.out.println("Email or Print PDF is not working");
 			}
 
-			// Print BOL on Shipment Detail Screen
-			try {
-				Driver.findElement(By.id("idprintbol")).click();
-				Thread.sleep(5000);
-
-				String winHandleBefore1 = Driver.getWindowHandle();
-				for (String winHandle1 : Driver.getWindowHandles()) {
-					Driver.switchTo().window(winHandle1);
-				}
-				Thread.sleep(15000);
-
-				Driver.close();
-				Thread.sleep(15000);
-				Driver.switchTo().window(winHandleBefore1);
-
-				System.out.println("Print BOL is working proper.");
-			} catch (Exception e) {
-				System.out.println("Print BOL is not enable.");
-				System.out.println("Please Process CSR Acknowledge OR TC Acknowledge to enable Print BOL.");
-				Thread.sleep(5000);
-			}
-
-			// FAX BOL on Shipment Detail Screen
-			try {
-				Driver.findElement(By.id("hlkFax")).click();
-				Thread.sleep(5000);
-				Driver.findElement(By.id("btnSendFAXBOL")).click();
-				Thread.sleep(15000);
-
-				String Message4 = Driver.findElement(By.id("errorid")).getText();
-				Thread.sleep(5000);
-
-				if (Message4.equals("Please select atleast one Fax #s.")) {
-					System.out.println("*******Validation Message is display Proper.*******");
-					System.out.println("*******" + Message4 + "*******");
-				} else {
-					System.out.println("*******Validation Message is not display Proper.*******");
-					System.out.println("*******" + Message4 + "*******");
-				}
-				Thread.sleep(5000);
-
-				robot.keyPress(KeyEvent.VK_ESCAPE);
-				Thread.sleep(5000);
-
-				System.out.println("FAX BOL is working proper.");
-			} catch (Exception e) {
-				System.out.println("FAX BOL is not enable.");
-				System.out.println("Please Process CSR Acknowledge OR TC Acknowledge to enable FAX BOL.");
-				Thread.sleep(5000);
-			}
+			// Print BOL on Shipment Detail Screen=Not available
+			/*
+			 * try { Driver.findElement(By.id("idprintbol")).click(); Thread.sleep(5000);
+			 * 
+			 * String winHandleBefore1 = Driver.getWindowHandle(); for (String winHandle1 :
+			 * Driver.getWindowHandles()) { Driver.switchTo().window(winHandle1); }
+			 * Thread.sleep(15000);
+			 * 
+			 * Driver.close(); Thread.sleep(15000);
+			 * Driver.switchTo().window(winHandleBefore1);
+			 * 
+			 * System.out.println("Print BOL is working proper."); } catch (Exception e) {
+			 * System.out.println("Print BOL is not enable."); System.out.
+			 * println("Please Process CSR Acknowledge OR TC Acknowledge to enable Print BOL."
+			 * ); Thread.sleep(5000); }
+			 */
+			/*
+			 * // FAX BOL on Shipment Detail Screen=Not availale try {
+			 * Driver.findElement(By.id("hlkFax")).click(); Thread.sleep(5000);
+			 * Driver.findElement(By.id("btnSendFAXBOL")).click(); Thread.sleep(15000);
+			 * 
+			 * String Message4 = Driver.findElement(By.id("errorid")).getText();
+			 * Thread.sleep(5000);
+			 * 
+			 * if (Message4.equals("Please select atleast one Fax #s.")) {
+			 * System.out.println("*******Validation Message is display Proper.*******");
+			 * System.out.println("*******" + Message4 + "*******"); } else {
+			 * System.out.println("*******Validation Message is not display Proper.*******"
+			 * ); System.out.println("*******" + Message4 + "*******"); }
+			 * Thread.sleep(5000);
+			 * 
+			 * robot.keyPress(KeyEvent.VK_ESCAPE); Thread.sleep(5000);
+			 * 
+			 * System.out.println("FAX BOL is working proper."); } catch (Exception e) {
+			 * System.out.println("FAX BOL is not enable."); System.out.
+			 * println("Please Process CSR Acknowledge OR TC Acknowledge to enable FAX BOL."
+			 * ); Thread.sleep(5000); }
+			 */
 
 			try {
 				Driver.findElement(By.id("hlkMemo")).click();
-				Thread.sleep(15000);
-
+				wait.until(ExpectedConditions
+						.visibilityOfAllElementsLocatedBy(By.xpath("//*[@class=\"ngdialog-content\"]")));
 				robot.keyPress(KeyEvent.VK_ESCAPE);
-				Thread.sleep(5000);
+				Thread.sleep(1000);
 
 				System.out.println("Memo is working proper.");
-				Thread.sleep(5000);
 			} catch (Exception e) {
 				System.out.println("Memo is not enable.");
 				System.out.println("Please ADD Memo from Connect to enable Memo.");
-				Thread.sleep(5000);
 			}
 
 			try {
 				Driver.findElement(By.id("hlkViewCharges")).click();
-				Thread.sleep(15000);
-
+				wait.until(ExpectedConditions
+						.visibilityOfAllElementsLocatedBy(By.xpath("//*[@class=\"ngdialog-content\"]")));
 				robot.keyPress(KeyEvent.VK_ESCAPE);
-				Thread.sleep(5000);
+				Thread.sleep(2000);
 
 				System.out.println("View Charges is working proper.");
 			} catch (Exception e) {
 				System.out.println("Please Check Check Box from Connect to view Charges in Net Ship.");
-				Thread.sleep(5000);
 			}
 
 			try {
-				Driver.findElement(By.id("idDocUpload")).click();
-				Thread.sleep(20000);
+				Driver.findElement(By.id("idupload")).click();
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+				wait.until(ExpectedConditions
+						.visibilityOfAllElementsLocatedBy(By.xpath("//*[@ng-form=\"DocDetailsForm\"]")));
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("hlkaddUpload")));
 
 				Driver.findElement(By.id("hlkaddUpload")).click();
 				Driver.findElement(By.id("txtDocName")).sendKeys("AUTOPdoshiDocument");
@@ -908,10 +796,10 @@ public class NetShipAll extends BaseInit {
 				// Upload Doc DEV.xls");
 				// Staging
 				Driver.findElement(By.id("file")).sendKeys(
-						"D:\\Netlink_AJ\\TestAutomation\\ConnectDetailTesting\\ConnectEclipse\\NetShipAllScreen\\DataFiles\\Job Upload Doc STG.xls");
-				Thread.sleep(15000);
+						"C:\\Users\\rprajapati\\git\\NetShipAllScreen\\NetShipAllScreen\\DataFiles\\Job Upload Doc STG.xls");
+				Thread.sleep(2000);
 				Driver.findElement(By.id("btnUpload")).click();
-				Thread.sleep(30000);
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("successid")));
 
 				// String Message5 = Driver.findElement(By.id("hrefDocError")).getText();
 
@@ -925,180 +813,141 @@ public class NetShipAll extends BaseInit {
 
 				String Message6 = Driver.findElement(By.id("successid")).getText();
 
-				if (Message6.equals("Import Process Completed !")) {
-					Message6 = "*****Import Process is Completed !*****";
+				if (Message6.equals("Upload/Import Process Completed !")) {
 					System.out.println(Message6);
-					Thread.sleep(5000);
 				} else {
 					Message6 = Driver.findElement(By.id("errorid")).getText();
 					SheetMessage = "*****Import Process is not Completed !*****";
 					System.out.println(Message6);
-					Thread.sleep(5000);
 				}
-				Thread.sleep(5000);
 
 				Driver.findElement(By.id("btnSave")).click();
-				Thread.sleep(5000);
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 				System.out.println("Upload link is working proper.");
 
 				if (Driver.findElement(By.id("hrefDocError")).isDisplayed()) {
 					Driver.findElement(By.id("btnCancel")).click();
-					Thread.sleep(15000);
+					Thread.sleep(2000);
 				} else {
 					Driver.findElement(By.id("btnSave")).click();
-					Thread.sleep(15000);
+					wait.until(ExpectedConditions
+							.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 					Driver.findElement(By.id("btnsaveandclose")).click();
-					Thread.sleep(15000);
+					Thread.sleep(2000);
 				}
 			} catch (Exception e) {
 				try {
 					Driver.findElement(By.id("iduploadgreen")).click();
-					Thread.sleep(20000);
-
+					wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("tblcollapseExample")));
+					wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("hlkaddUpload")));
 					Driver.findElement(By.id("hlkaddUpload")).click();
 					Driver.findElement(By.id("txtDocName")).sendKeys("AUTOPdoshiDocument");
 					// DEV
-					// Driver.findElement(By.id("file")).sendKeys("D:\\Netlink_AJ\\TestAutomation\\ConnectDetailTesting\\ConnectEclipse\\NetShipAllScreen\\DataFiles\\Job
-					// Upload Doc DEV.xls");
+					// Driver.findElement(By.id("file")).sendKeys("./DataFiles/Job Upload Doc
+					// DEV.xls");
 					// Staging
 					Driver.findElement(By.id("file")).sendKeys(
-							"D:\\Netlink_AJ\\TestAutomation\\ConnectDetailTesting\\ConnectEclipse\\NetShipAllScreen\\DataFiles\\Job Upload Doc STG.xls");
-					Thread.sleep(15000);
+							"C:\\Users\\rprajapati\\git\\NetShipAllScreen\\NetShipAllScreen\\DataFiles\\Job Upload Doc STG.xls");
+					Thread.sleep(2000);
 					Driver.findElement(By.id("btnUpload")).click();
-					Thread.sleep(30000);
-
-					// String Message5 = Driver.findElement(By.id("hrefDocError")).getText();
-
-					// if(Message5.contains("already exists.Your file was saved as"))
-					// {
-					// Message5 = "*****This File is Already Uploaded Before !*****";
-					// System.out.println(Message5);
-					// Thread.sleep(5000);
-					// }
-					// Thread.sleep(5000);
+					wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("successid")));
 
 					String Message6 = Driver.findElement(By.id("successid")).getText();
 
-					if (Message6.equals("Import Process Completed !")) {
-						Message6 = "*****Import Process is Completed !*****";
+					if (Message6.equals("Upload/Import Process Completed !")) {
 						System.out.println(Message6);
-						Thread.sleep(5000);
 					} else {
 						Message6 = Driver.findElement(By.id("errorid")).getText();
 						SheetMessage = "*****Import Process is not Completed !*****";
 						System.out.println(Message6);
-						Thread.sleep(5000);
 					}
-					Thread.sleep(5000);
-
 					Driver.findElement(By.id("btnSave")).click();
-					Thread.sleep(5000);
+					wait.until(ExpectedConditions
+							.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 					System.out.println("Upload link is working proper.");
 
 					if (Driver.findElement(By.id("hrefDocError")).isDisplayed()) {
 						Driver.findElement(By.id("btnCancel")).click();
-						Thread.sleep(15000);
+						wait.until(ExpectedConditions
+								.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 					} else {
 						Driver.findElement(By.id("btnSave")).click();
-						Thread.sleep(15000);
+						wait.until(ExpectedConditions
+								.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 						Driver.findElement(By.id("btnsaveandclose")).click();
-						Thread.sleep(15000);
+						Thread.sleep(2000);
 					}
 				} catch (Exception f) {
-					try {
-						Driver.findElement(By.id("hlkUploadDocument")).click();
-						Thread.sleep(20000);
-
-						Driver.findElement(By.id("hlkaddUpload")).click();
-						Driver.findElement(By.id("txtDocName")).sendKeys("AUTOPdoshiDocument");
-						// DEV
-						// Driver.findElement(By.id("file")).sendKeys("D:\\Netlink_AJ\\TestAutomation\\ConnectDetailTesting\\ConnectEclipse\\NetShipAllScreen\\DataFiles\\Job
-						// Upload Doc DEV.xls");
-						// Staging
-						Driver.findElement(By.id("file")).sendKeys(
-								"D:\\Netlink_AJ\\TestAutomation\\ConnectDetailTesting\\ConnectEclipse\\NetShipAllScreen\\DataFiles\\Job Upload Doc STG.xls");
-						Thread.sleep(15000);
-						Driver.findElement(By.id("btnUpload")).click();
-						Thread.sleep(30000);
-
-						// String Message5 = Driver.findElement(By.id("hrefDocError")).getText();
-
-						// if(Message5.contains("already exists.Your file was saved as"))
-						// {
-						// Message5 = "*****This File is Already Uploaded Before !*****";
-						// System.out.println(Message5);
-						// Thread.sleep(5000);
-						// }
-						// Thread.sleep(5000);
-
-						String Message6 = Driver.findElement(By.id("successid")).getText();
-
-						if (Message6.equals("Import Process Completed !")) {
-							Message6 = "*****Import Process is Completed !*****";
-							System.out.println(Message6);
-							Thread.sleep(5000);
-						} else {
-							Message6 = Driver.findElement(By.id("errorid")).getText();
-							SheetMessage = "*****Import Process is not Completed !*****";
-							System.out.println(Message6);
-							Thread.sleep(5000);
-						}
-						Thread.sleep(5000);
-
-						Driver.findElement(By.id("btnSave")).click();
-						Thread.sleep(5000);
-
-						System.out.println("Upload link is working proper.");
-
-						if (Driver.findElement(By.id("hrefDocError")).isDisplayed()) {
-							Driver.findElement(By.id("btnCancel")).click();
-							Thread.sleep(15000);
-						} else {
-							Driver.findElement(By.id("btnSave")).click();
-							Thread.sleep(15000);
-
-							Driver.findElement(By.id("btnsaveandclose")).click();
-							Thread.sleep(15000);
-						}
-					} catch (Exception g) {
-						System.out.println("There is no Upload Image display Please check Job manualy.");
-					}
+					// --There is no Upload Document button
+					/*
+					 * try { Driver.findElement(By.id("hlkUploadDocument")).click();
+					 * Thread.sleep(20000);
+					 * 
+					 * Driver.findElement(By.id("hlkaddUpload")).click();
+					 * Driver.findElement(By.id("txtDocName")).sendKeys("AUTOPdoshiDocument"); //
+					 * DEV // Driver.findElement(By.id("file")).sendKeys("./DataFiles/Job Upload Doc
+					 * // DEV.xls"); // Staging Driver.findElement(By.id("file")).
+					 * sendKeys("./DataFiles/Job Upload Doc STG.xls"); Thread.sleep(15000);
+					 * Driver.findElement(By.id("btnUpload")).click(); Thread.sleep(30000);
+					 * 
+					 * String Message6 = Driver.findElement(By.id("successid")).getText();
+					 * 
+					 * if (Message6.equals("Import Process Completed !")) { Message6 =
+					 * "*****Import Process is Completed !*****"; System.out.println(Message6);
+					 * Thread.sleep(5000); } else { Message6 =
+					 * Driver.findElement(By.id("errorid")).getText(); SheetMessage =
+					 * "*****Import Process is not Completed !*****"; System.out.println(Message6);
+					 * Thread.sleep(5000); } Thread.sleep(5000);
+					 * 
+					 * Driver.findElement(By.id("btnSave")).click(); Thread.sleep(5000);
+					 * 
+					 * System.out.println("Upload link is working proper.");
+					 * 
+					 * if (Driver.findElement(By.id("hrefDocError")).isDisplayed()) {
+					 * Driver.findElement(By.id("btnCancel")).click(); Thread.sleep(15000); } else {
+					 * Driver.findElement(By.id("btnSave")).click(); Thread.sleep(15000);
+					 * 
+					 * Driver.findElement(By.id("btnsaveandclose")).click(); Thread.sleep(15000); }
+					 * } catch (Exception g) { System.out.
+					 * println("There is no Upload Image display Please check Job manualy."); }
+					 */
 				}
 			}
 
 			// Click on Watch list
 			try {
 				Driver.findElement(By.id("watchListBlack")).click();
-				Thread.sleep(15000);
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 				System.out.println("Watch list is working proper.");
 			} catch (Exception e) {
 				try {
 					Driver.findElement(By.id("watchListGreen")).click();
-					Thread.sleep(15000);
+					wait.until(ExpectedConditions
+							.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 					System.out.println("Watch list is working proper.");
 				} catch (Exception f) {
-					System.out.println("There is no Watch List Image display, Because Job is already Delivered.");
+					System.out.println("There is no Watch List Image display Please check Job manualy.");
 				}
 			}
 
 			try {
 				Driver.findElement(By.id("hlkRefresh")).click();
-				Thread.sleep(15000);
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 			} catch (Exception e) {
 				System.out.println("There is no job on Active Order from Test Data Excel.");
-				Thread.sleep(5000);
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 			}
 
 			try {
-				Driver.findElement(By.id("hlkBackToScreen")).click();
-				Thread.sleep(15000);
+				Driver.findElement(By.id("RecentDeliveredTab")).click();
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 			} catch (Exception e) {
 				System.out.println("There is no job on Active Order from Test Data Excel.");
-				Thread.sleep(5000);
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 			}
 		}
 	}
@@ -1107,13 +956,14 @@ public class NetShipAll extends BaseInit {
 	public void WatchList() throws Exception {
 		System.out.println("**********Watch List**********");
 		Robot robot = new Robot();
+		WebDriverWait wait = new WebDriverWait(Driver, 50);
+
 		// Read data from Excel
 		// DEV
 		// File src0 = new
 		// File("D:\\Netlink_AJ\\TestAutomation\\ConnectDetailTesting\\ConnectEclipse\\NetShipAllScreen\\DataFiles\\NetShipWatchListDEV.xlsx");
 		// Staging
-		File src0 = new File(
-				"D:\\Netlink_AJ\\TestAutomation\\ConnectDetailTesting\\ConnectEclipse\\NetShipAllScreen\\DataFiles\\NetShipWatchListSTG.xlsx");
+		File src0 = new File("D.\\DataFiles\\NetShipWatchListSTG.xlsx");
 
 		FileInputStream fis0 = new FileInputStream(src0);
 		Workbook workbook = WorkbookFactory.create(fis0);
@@ -1126,11 +976,11 @@ public class NetShipAll extends BaseInit {
 		System.out.println("\n********************************************************************************");
 
 		Driver.findElement(By.id("WathcListTab")).click();
-		Thread.sleep(20000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		Select SelectSort0 = new Select(Driver.findElement(By.id("drpcustomer")));
 		SelectSort0.selectByIndex(1);
-		Thread.sleep(15000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 //		SelectSort0.selectByIndex(2);
 //		Thread.sleep(15000);
@@ -1144,34 +994,18 @@ public class NetShipAll extends BaseInit {
 		SelectSort0.selectByIndex(0);
 		Thread.sleep(15000);
 
-		Select SelectSort2 = new Select(Driver.findElement(By.id("drpGrouping")));
-		SelectSort2.selectByIndex(1);
-		Thread.sleep(15000);
-
-		SelectSort2.selectByIndex(2);
-		Thread.sleep(15000);
-
-		SelectSort2.selectByIndex(3);
-		Thread.sleep(15000);
-
-		SelectSort2.selectByIndex(4);
-		Thread.sleep(15000);
-
-		SelectSort2.selectByIndex(5);
-		Thread.sleep(15000);
-
-		SelectSort2.selectByIndex(0);
-		Thread.sleep(15000);
+		// --GroupBy
+		selectGroupBy();
 
 		Select SelectSort3 = new Select(Driver.findElement(By.id("drpSorting")));
 		SelectSort3.selectByIndex(1);
-		Thread.sleep(15000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		SelectSort3.selectByIndex(2);
-		Thread.sleep(15000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		SelectSort3.selectByIndex(0);
-		Thread.sleep(15000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		for (int i = 1; i <= rcount; i++) {
 			System.out.println("\n********************************************************************************");
@@ -1180,31 +1014,35 @@ public class NetShipAll extends BaseInit {
 
 			String MeJob = "idmemo_" + formatter.formatCellValue(sh0.getRow(i).getCell(0));
 			String PrJob = "idprint_" + formatter.formatCellValue(sh0.getRow(i).getCell(0));
-			String SeJob = "JobId_" + formatter.formatCellValue(sh0.getRow(i).getCell(0));
+			String SeJob = "PickupId_N" + formatter.formatCellValue(sh0.getRow(i).getCell(1));
 
 			try {
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(MeJob)));
 				Driver.findElement(By.id(MeJob)).click();
-				Thread.sleep(20000);
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
-				Driver.findElement(By.id("hlkBackToScreen")).click();
-				Thread.sleep(5000);
+				// Driver.findElement(By.id("hlkBackToScreen")).click();
+				Driver.navigate().back();
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ActiveOrderGrd")));
 			} catch (Exception e) {
 				System.out.println("There is no Memo Added in Job, Please add Memo first in this Job : "
 						+ formatter.formatCellValue(sh0.getRow(i).getCell(0)));
 			}
 
 			try {
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(PrJob)));
 				Driver.findElement(By.id(PrJob)).click();
-				Thread.sleep(5000);
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 				String winHandleBefore2 = Driver.getWindowHandle();
 				for (String winHandle2 : Driver.getWindowHandles()) {
 					Driver.switchTo().window(winHandle2);
+					Thread.sleep(2000);
 				}
-				Thread.sleep(15000);
 
 				Driver.close();
-				Thread.sleep(15000);
+				Thread.sleep(2000);
 				Driver.switchTo().window(winHandleBefore2);
 			} catch (Exception e) {
 				System.out.println("Print Label is not able to work on Click, Please check Manualy with this Job : "
@@ -1214,10 +1052,11 @@ public class NetShipAll extends BaseInit {
 			List<WebElement> dynamicElement = Driver.findElements(By.id(SeJob));
 			if (dynamicElement.size() != 0) {
 				Driver.findElement(By.id(SeJob)).click();
-				Thread.sleep(20000);
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
-				Driver.findElement(By.id("hlkBackToScreen")).click();
-				Thread.sleep(5000);
+				Driver.navigate().back();
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ActiveOrderGrd")));
 			} else {
 				System.out.println("*********YOUR JOB IS NOT DISPLAY IN LIST.*********");
 			}
@@ -1227,185 +1066,212 @@ public class NetShipAll extends BaseInit {
 
 			Driver.findElement(By.id("txtGlobalSearch")).sendKeys(formatter.formatCellValue(sh0.getRow(i).getCell(1)));
 			Driver.findElement(By.id("txtGlobalSearch")).sendKeys(Keys.ENTER);
-			Thread.sleep(20000);
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+
+			// --Not available
+			/*
+			 * try { Driver.findElement(By.id("hlkBillofLading")).click();
+			 * Thread.sleep(5000);
+			 * 
+			 * Driver.findElement(By.id("btemailbol")).click(); Thread.sleep(5000);
+			 * 
+			 * Driver.findElement(By.id("txtfrom")).clear();
+			 * Driver.findElement(By.id("btnSendBOL")).click(); Thread.sleep(5000);
+			 * 
+			 * String Message1 = Driver.findElement(By.id("idValidation")).getText();
+			 * 
+			 * if (Message1.contains("Address is required.")) {
+			 * System.out.println("\n*******Validation are display Proper.*******");
+			 * System.out.println("*******" + Message1 + "*******"); Thread.sleep(5000); }
+			 * else {
+			 * System.out.println("*******Validation are not display Proper.*******");
+			 * System.out.println("*******" + Message1 + "*******"); Thread.sleep(5000); }
+			 * 
+			 * Driver.findElement(By.id("txtfrom")).sendKeys("pdoshi@samyak.com");
+			 * Driver.findElement(By.id("txtto")).sendKeys(
+			 * "puagent@samyakinfo.com,dlagent@samyakinfo.com");
+			 * Driver.findElement(By.id("btnSendBOL")).click(); Thread.sleep(5000);
+			 * Driver.findElement(By.xpath("/html/body/div[6]/div/div/div[3]/button[1]")).
+			 * click(); Thread.sleep(15000);
+			 * 
+			 * String Message2 = Driver.findElement(By.id("saveid")).getText();
+			 * 
+			 * if (Message2.equals("B.O.L # successfully send via Email")) {
+			 * System.out.println("*******Message is display Proper.*******");
+			 * System.out.println("*******" + Message2 + "*******"); } else {
+			 * System.out.println("*******Validation is not display Proper.*******");
+			 * System.out.println("*******" + Message2 + "*******"); } Thread.sleep(5000);
+			 * 
+			 * Driver.findElement(By.id("btfaxbol")).click(); Thread.sleep(5000);
+			 * Driver.findElement(By.id("btnSendFAX")).click(); Thread.sleep(5000);
+			 * 
+			 * String Message3 = Driver.findElement(By.id("errorid")).getText();
+			 * 
+			 * if (Message3.equals("Please select atleast one Fax #s.")) {
+			 * System.out.println("*******Message is display Proper.*******");
+			 * System.out.println("*******" + Message3 + "*******"); } else {
+			 * System.out.println("*******Validation is not display Proper.*******");
+			 * System.out.println("*******" + Message3 + "*******"); } Thread.sleep(5000);
+			 * 
+			 * // FAX Setup Link // Driver.findElement(By.id("hrefFax")).click(); //
+			 * Thread.sleep(15000);
+			 * 
+			 * Driver.findElement(By.id("btprint")).click(); Thread.sleep(5000);
+			 * 
+			 * String winHandleBefore = Driver.getWindowHandle(); for (String winHandle :
+			 * Driver.getWindowHandles()) { Driver.switchTo().window(winHandle); }
+			 * Thread.sleep(15000);
+			 * 
+			 * Driver.close(); Thread.sleep(15000);
+			 * Driver.switchTo().window(winHandleBefore);
+			 * 
+			 * Driver.findElement(By.id("btshipdetail")).click(); Thread.sleep(15000);
+			 * 
+			 * System.out.println("Bill of Lading is working proper."); } catch (Exception
+			 * e) { System.out.println("Bill of Lading is not enable."); System.out.
+			 * println("Please Process CSR Acknowledge OR TC Acknowledge to enable Bill of Lading."
+			 * ); }
+			 */
+
+			// Print BOL on Shipment Detail Screen=Not available
+			/*
+			 * try { Driver.findElement(By.id("idprintbol")).click(); Thread.sleep(5000);
+			 * 
+			 * String winHandleBefore1 = Driver.getWindowHandle(); for (String winHandle1 :
+			 * Driver.getWindowHandles()) { Driver.switchTo().window(winHandle1); }
+			 * Thread.sleep(15000);
+			 * 
+			 * Driver.close(); Thread.sleep(15000);
+			 * Driver.switchTo().window(winHandleBefore1);
+			 * 
+			 * System.out.println("Print BOL is working proper."); } catch (Exception e) {
+			 * System.out.println("Print BOL is not enable."); System.out.
+			 * println("Please Process CSR Acknowledge OR TC Acknowledge to enable Print BOL."
+			 * ); Thread.sleep(5000); }
+			 * 
+			 * // FAX BOL on Shipment Detail Screen try {
+			 * Driver.findElement(By.id("hlkFax")).click(); Thread.sleep(5000);
+			 * Driver.findElement(By.id("btnSendFAXBOL")).click(); Thread.sleep(15000);
+			 * 
+			 * String Message4 = Driver.findElement(By.id("errorid")).getText();
+			 * Thread.sleep(5000);
+			 * 
+			 * if (Message4.equals("Please select atleast one Fax #s.")) {
+			 * System.out.println("*******Validation Message is display Proper.*******");
+			 * System.out.println("*******" + Message4 + "*******"); } else {
+			 * System.out.println("*******Validation Message is not display Proper.*******"
+			 * ); System.out.println("*******" + Message4 + "*******"); }
+			 * Thread.sleep(5000);
+			 * 
+			 * robot.keyPress(KeyEvent.VK_ESCAPE); Thread.sleep(5000);
+			 * 
+			 * System.out.println("FAX BOL is working proper."); } catch (Exception e) {
+			 * System.out.println("FAX BOL is not enable."); System.out.
+			 * println("Please Process CSR Acknowledge OR TC Acknowledge to enable FAX BOL."
+			 * ); Thread.sleep(5000); }
+			 */
 
 			try {
-				Driver.findElement(By.id("hlkBillofLading")).click();
-				Thread.sleep(5000);
+				// --Click on Email
+				Driver.findElement(By.id("hlkEmail")).click();
+				wait.until(ExpectedConditions
+						.visibilityOfAllElementsLocatedBy(By.xpath("//*[@class=\"ngdialog-content\"]")));
 
-				Driver.findElement(By.id("btemailbol")).click();
-				Thread.sleep(5000);
+				Driver.findElement(By.id("txtEmail")).clear();
+				Driver.findElement(By.id("btnSendEmail")).click();
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("hrefErr")));
 
-				Driver.findElement(By.id("txtfrom")).clear();
-				Driver.findElement(By.id("btnSendBOL")).click();
-				Thread.sleep(5000);
+				String Message1 = Driver.findElement(By.id("hrefErr")).getText();
 
-				String Message1 = Driver.findElement(By.id("idValidation")).getText();
-
-				if (Message1.contains("Address is required.")) {
+				if (Message1.contains("Please Enter Email.")) {
 					System.out.println("\n*******Validation are display Proper.*******");
 					System.out.println("*******" + Message1 + "*******");
-					Thread.sleep(5000);
 				} else {
 					System.out.println("*******Validation are not display Proper.*******");
 					System.out.println("*******" + Message1 + "*******");
-					Thread.sleep(5000);
 				}
 
-				Driver.findElement(By.id("txtfrom")).sendKeys("pdoshi@samyak.com");
-				Driver.findElement(By.id("txtto")).sendKeys("puagent@samyakinfo.com,dlagent@samyakinfo.com");
-				Driver.findElement(By.id("btnSendBOL")).click();
-				Thread.sleep(5000);
-				Driver.findElement(By.xpath("/html/body/div[6]/div/div/div[3]/button[1]")).click();
-				Thread.sleep(15000);
+				// --Send email
+				Driver.findElement(By.id("txtEmail")).sendKeys("Ravina.prajapati@samyak.com");
+				Driver.findElement(By.id("btnSendEmail")).click();
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
-				String Message2 = Driver.findElement(By.id("saveid")).getText();
+				String Message2 = Driver.findElement(By.xpath("//*[@ng-bind=\"emailMessage\"]")).getText();
 
-				if (Message2.equals("B.O.L # successfully send via Email")) {
+				if (Message2.equals("Email successfully sent!")) {
 					System.out.println("*******Message is display Proper.*******");
 					System.out.println("*******" + Message2 + "*******");
 				} else {
 					System.out.println("*******Validation is not display Proper.*******");
 					System.out.println("*******" + Message2 + "*******");
 				}
-				Thread.sleep(5000);
+				// --Close Email popup
+				robot.keyPress(KeyEvent.VK_ESCAPE);
+				Thread.sleep(1000);
 
-				Driver.findElement(By.id("btfaxbol")).click();
-				Thread.sleep(5000);
-				Driver.findElement(By.id("btnSendFAX")).click();
-				Thread.sleep(5000);
-
-				String Message3 = Driver.findElement(By.id("errorid")).getText();
-
-				if (Message3.equals("Please select atleast one Fax #s.")) {
-					System.out.println("*******Message is display Proper.*******");
-					System.out.println("*******" + Message3 + "*******");
-				} else {
-					System.out.println("*******Validation is not display Proper.*******");
-					System.out.println("*******" + Message3 + "*******");
-				}
-				Thread.sleep(5000);
-
-				// FAX Setup Link
-				// Driver.findElement(By.id("hrefFax")).click();
-				// Thread.sleep(15000);
-
-				Driver.findElement(By.id("btprint")).click();
-				Thread.sleep(5000);
+				// --Print button
+				Driver.findElement(By.id("idpdfprint")).click();
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 				String winHandleBefore = Driver.getWindowHandle();
 				for (String winHandle : Driver.getWindowHandles()) {
 					Driver.switchTo().window(winHandle);
+					Thread.sleep(2000);
 				}
-				Thread.sleep(15000);
 
 				Driver.close();
-				Thread.sleep(15000);
+
+				// Switch back to original browser (first window)
 				Driver.switchTo().window(winHandleBefore);
+				Thread.sleep(2000);
 
-				Driver.findElement(By.id("btshipdetail")).click();
-				Thread.sleep(15000);
-
-				System.out.println("Bill of Lading is working proper.");
 			} catch (Exception e) {
-				System.out.println("Bill of Lading is not enable.");
-				System.out.println("Please Process CSR Acknowledge OR TC Acknowledge to enable Bill of Lading.");
-			}
-
-			// Print BOL on Shipment Detail Screen
-			try {
-				Driver.findElement(By.id("idprintbol")).click();
-				Thread.sleep(5000);
-
-				String winHandleBefore1 = Driver.getWindowHandle();
-				for (String winHandle1 : Driver.getWindowHandles()) {
-					Driver.switchTo().window(winHandle1);
-				}
-				Thread.sleep(15000);
-
-				Driver.close();
-				Thread.sleep(15000);
-				Driver.switchTo().window(winHandleBefore1);
-
-				System.out.println("Print BOL is working proper.");
-			} catch (Exception e) {
-				System.out.println("Print BOL is not enable.");
-				System.out.println("Please Process CSR Acknowledge OR TC Acknowledge to enable Print BOL.");
-				Thread.sleep(5000);
-			}
-
-			// FAX BOL on Shipment Detail Screen
-			try {
-				Driver.findElement(By.id("hlkFax")).click();
-				Thread.sleep(5000);
-				Driver.findElement(By.id("btnSendFAXBOL")).click();
-				Thread.sleep(15000);
-
-				String Message4 = Driver.findElement(By.id("errorid")).getText();
-				Thread.sleep(5000);
-
-				if (Message4.equals("Please select atleast one Fax #s.")) {
-					System.out.println("*******Validation Message is display Proper.*******");
-					System.out.println("*******" + Message4 + "*******");
-				} else {
-					System.out.println("*******Validation Message is not display Proper.*******");
-					System.out.println("*******" + Message4 + "*******");
-				}
-				Thread.sleep(5000);
-
-				robot.keyPress(KeyEvent.VK_ESCAPE);
-				Thread.sleep(5000);
-
-				System.out.println("FAX BOL is working proper.");
-			} catch (Exception e) {
-				System.out.println("FAX BOL is not enable.");
-				System.out.println("Please Process CSR Acknowledge OR TC Acknowledge to enable FAX BOL.");
-				Thread.sleep(5000);
+				System.out.println("Email or Print PDF is not working");
 			}
 
 			try {
 				Driver.findElement(By.id("hlkMemo")).click();
-				Thread.sleep(15000);
-
+				wait.until(ExpectedConditions
+						.visibilityOfAllElementsLocatedBy(By.xpath("//*[@class=\"ngdialog-content\"]")));
 				robot.keyPress(KeyEvent.VK_ESCAPE);
-				Thread.sleep(5000);
+				Thread.sleep(1000);
 
 				System.out.println("Memo is working proper.");
-				Thread.sleep(5000);
 			} catch (Exception e) {
 				System.out.println("Memo is not enable.");
 				System.out.println("Please ADD Memo from Connect to enable Memo.");
-				Thread.sleep(5000);
 			}
 
 			try {
 				Driver.findElement(By.id("hlkViewCharges")).click();
-				Thread.sleep(15000);
-
+				wait.until(ExpectedConditions
+						.visibilityOfAllElementsLocatedBy(By.xpath("//*[@class=\"ngdialog-content\"]")));
 				robot.keyPress(KeyEvent.VK_ESCAPE);
-				Thread.sleep(5000);
+				Thread.sleep(1000);
 
 				System.out.println("View Charges is working proper.");
 			} catch (Exception e) {
 				System.out.println("Please Check Check Box from Connect to view Charges in Net Ship.");
-				Thread.sleep(5000);
 			}
 
 			try {
 				Driver.findElement(By.id("idDocUpload")).click();
-				Thread.sleep(20000);
-
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+				wait.until(ExpectedConditions
+						.visibilityOfAllElementsLocatedBy(By.xpath("//*[@ng-form=\"DocDetailsForm\"]")));
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("hlkaddUpload")));
 				Driver.findElement(By.id("hlkaddUpload")).click();
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("txtDocName")));
 				Driver.findElement(By.id("txtDocName")).sendKeys("AUTOPdoshiDocument");
 				// DEV
 				// Driver.findElement(By.id("file")).sendKeys("D:\\Netlink_AJ\\TestAutomation\\ConnectDetailTesting\\ConnectEclipse\\NetShipAllScreen\\DataFiles\\Job
 				// Upload Doc DEV.xls");
 				// Staging
 				Driver.findElement(By.id("file")).sendKeys(
-						"D:\\Netlink_AJ\\TestAutomation\\ConnectDetailTesting\\ConnectEclipse\\NetShipAllScreen\\DataFiles\\Job Upload Doc STG.xls");
-				Thread.sleep(15000);
+						"C:\\Users\\rprajapati\\git\\NetShipAllScreen\\NetShipAllScreen\\DataFiles\\Job Upload Doc STG.xls");
+				Thread.sleep(2000);
 				Driver.findElement(By.id("btnUpload")).click();
-				Thread.sleep(30000);
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("successid")));
 
 				// String Message5 = Driver.findElement(By.id("hrefDocError")).getText();
 
@@ -1419,165 +1285,133 @@ public class NetShipAll extends BaseInit {
 
 				String Message6 = Driver.findElement(By.id("successid")).getText();
 
-				if (Message6.equals("Import Process Completed !")) {
-					Message6 = "*****Import Process is Completed !*****";
+				if (Message6.equals("Upload/Import Process Completed !")) {
 					System.out.println(Message6);
 					Thread.sleep(5000);
 				} else {
 					Message6 = Driver.findElement(By.id("errorid")).getText();
 					SheetMessage = "*****Import Process is not Completed !*****";
 					System.out.println(Message6);
-					Thread.sleep(5000);
 				}
-				Thread.sleep(5000);
-
 				Driver.findElement(By.id("btnSave")).click();
-				Thread.sleep(5000);
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 				System.out.println("Upload link is working proper.");
 
 				if (Driver.findElement(By.id("hrefDocError")).isDisplayed()) {
 					Driver.findElement(By.id("btnCancel")).click();
-					Thread.sleep(15000);
+					Thread.sleep(2000);
 				} else {
 					Driver.findElement(By.id("btnSave")).click();
-					Thread.sleep(15000);
+					wait.until(ExpectedConditions
+							.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 					Driver.findElement(By.id("btnsaveandclose")).click();
-					Thread.sleep(15000);
+					Thread.sleep(2000);
 				}
 			} catch (Exception e) {
 				try {
 					Driver.findElement(By.id("iduploadgreen")).click();
-					Thread.sleep(20000);
-
+					wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("tblcollapseExample")));
+					wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("hlkaddUpload")));
 					Driver.findElement(By.id("hlkaddUpload")).click();
 					Driver.findElement(By.id("txtDocName")).sendKeys("AUTOPdoshiDocument");
 					// DEV
-					// Driver.findElement(By.id("file")).sendKeys("D:\\Netlink_AJ\\TestAutomation\\ConnectDetailTesting\\ConnectEclipse\\NetShipAllScreen\\DataFiles\\Job
-					// Upload Doc DEV.xls");
+					// Driver.findElement(By.id("file")).sendKeys("./DataFiles/Job Upload Doc
+					// DEV.xls");
 					// Staging
 					Driver.findElement(By.id("file")).sendKeys(
-							"D:\\Netlink_AJ\\TestAutomation\\ConnectDetailTesting\\ConnectEclipse\\NetShipAllScreen\\DataFiles\\Job Upload Doc STG.xls");
-					Thread.sleep(15000);
+							"C:\\Users\\rprajapati\\git\\NetShipAllScreen\\NetShipAllScreen\\DataFiles\\Job Upload Doc STG.xls");
+					Thread.sleep(2000);
 					Driver.findElement(By.id("btnUpload")).click();
-					Thread.sleep(30000);
-
-					// String Message5 = Driver.findElement(By.id("hrefDocError")).getText();
-
-					// if(Message5.contains("already exists.Your file was saved as"))
-					// {
-					// Message5 = "*****This File is Already Uploaded Before !*****";
-					// System.out.println(Message5);
-					// Thread.sleep(5000);
-					// }
-					// Thread.sleep(5000);
+					wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("successid")));
 
 					String Message6 = Driver.findElement(By.id("successid")).getText();
 
-					if (Message6.equals("Import Process Completed !")) {
-						Message6 = "*****Import Process is Completed !*****";
+					if (Message6.equals("Upload/Import Process Completed !")) {
 						System.out.println(Message6);
-						Thread.sleep(5000);
 					} else {
 						Message6 = Driver.findElement(By.id("errorid")).getText();
 						SheetMessage = "*****Import Process is not Completed !*****";
 						System.out.println(Message6);
-						Thread.sleep(5000);
 					}
-					Thread.sleep(5000);
-
 					Driver.findElement(By.id("btnSave")).click();
-					Thread.sleep(5000);
+					wait.until(ExpectedConditions
+							.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 					System.out.println("Upload link is working proper.");
 
 					if (Driver.findElement(By.id("hrefDocError")).isDisplayed()) {
 						Driver.findElement(By.id("btnCancel")).click();
-						Thread.sleep(15000);
+						wait.until(ExpectedConditions
+								.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 					} else {
 						Driver.findElement(By.id("btnSave")).click();
-						Thread.sleep(15000);
+						wait.until(ExpectedConditions
+								.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 						Driver.findElement(By.id("btnsaveandclose")).click();
-						Thread.sleep(15000);
+						Thread.sleep(2000);
 					}
 				} catch (Exception f) {
-					try {
-						Driver.findElement(By.id("hlkUploadDocument")).click();
-						Thread.sleep(20000);
-
-						Driver.findElement(By.id("hlkaddUpload")).click();
-						Driver.findElement(By.id("txtDocName")).sendKeys("AUTOPdoshiDocument");
-						// DEV
-						// Driver.findElement(By.id("file")).sendKeys("D:\\Netlink_AJ\\TestAutomation\\ConnectDetailTesting\\ConnectEclipse\\NetShipAllScreen\\DataFiles\\Job
-						// Upload Doc DEV.xls");
-						// Staging
-						Driver.findElement(By.id("file")).sendKeys(
-								"D:\\Netlink_AJ\\TestAutomation\\ConnectDetailTesting\\ConnectEclipse\\NetShipAllScreen\\DataFiles\\Job Upload Doc STG.xls");
-						Thread.sleep(15000);
-						Driver.findElement(By.id("btnUpload")).click();
-						Thread.sleep(30000);
-
-						// String Message5 = Driver.findElement(By.id("hrefDocError")).getText();
-
-						// if(Message5.contains("already exists.Your file was saved as"))
-						// {
-						// Message5 = "*****This File is Already Uploaded Before !*****";
-						// System.out.println(Message5);
-						// Thread.sleep(5000);
-						// }
-						// Thread.sleep(5000);
-
-						String Message6 = Driver.findElement(By.id("successid")).getText();
-
-						if (Message6.equals("Import Process Completed !")) {
-							Message6 = "*****Import Process is Completed !*****";
-							System.out.println(Message6);
-							Thread.sleep(5000);
-						} else {
-							Message6 = Driver.findElement(By.id("errorid")).getText();
-							SheetMessage = "*****Import Process is not Completed !*****";
-							System.out.println(Message6);
-							Thread.sleep(5000);
-						}
-						Thread.sleep(5000);
-
-						Driver.findElement(By.id("btnSave")).click();
-						Thread.sleep(5000);
-
-						System.out.println("Upload link is working proper.");
-
-						if (Driver.findElement(By.id("hrefDocError")).isDisplayed()) {
-							Driver.findElement(By.id("btnCancel")).click();
-							Thread.sleep(15000);
-						} else {
-							Driver.findElement(By.id("btnSave")).click();
-							Thread.sleep(15000);
-
-							Driver.findElement(By.id("btnsaveandclose")).click();
-							Thread.sleep(15000);
-						}
-					} catch (Exception g) {
-						System.out.println("There is no Upload Image display Please check Job manualy.");
-					}
+					// --There is no button
+					/*
+					 * try { Driver.findElement(By.id("hlkUploadDocument")).click();
+					 * Thread.sleep(20000);
+					 * 
+					 * Driver.findElement(By.id("hlkaddUpload")).click();
+					 * Driver.findElement(By.id("txtDocName")).sendKeys("AUTOPdoshiDocument"); //
+					 * DEV //
+					 * Driver.findElement(By.id("file")).sendKeys("D:\\Netlink_AJ\\TestAutomation\\
+					 * ConnectDetailTesting\\ConnectEclipse\\NetShipAllScreen\\DataFiles\\Job //
+					 * Upload Doc DEV.xls"); // Staging Driver.findElement(By.id("file")).sendKeys(
+					 * "D:\\Netlink_AJ\\TestAutomation\\ConnectDetailTesting\\ConnectEclipse\\NetShipAllScreen\\DataFiles\\Job Upload Doc STG.xls"
+					 * ); Thread.sleep(15000); Driver.findElement(By.id("btnUpload")).click();
+					 * Thread.sleep(30000);
+					 * 
+					 * // String Message5 = Driver.findElement(By.id("hrefDocError")).getText();
+					 * 
+					 * // if(Message5.contains("already exists.Your file was saved as")) // { //
+					 * Message5 = "*****This File is Already Uploaded Before !*****"; //
+					 * System.out.println(Message5); // Thread.sleep(5000); // } //
+					 * Thread.sleep(5000);
+					 * 
+					 * String Message6 = Driver.findElement(By.id("successid")).getText();
+					 * 
+					 * if (Message6.equals("Import Process Completed !")) { Message6 =
+					 * "*****Import Process is Completed !*****"; System.out.println(Message6);
+					 * Thread.sleep(5000); } else { Message6 =
+					 * Driver.findElement(By.id("errorid")).getText(); SheetMessage =
+					 * "*****Import Process is not Completed !*****"; System.out.println(Message6);
+					 * Thread.sleep(5000); } Thread.sleep(5000);
+					 * 
+					 * Driver.findElement(By.id("btnSave")).click(); Thread.sleep(5000);
+					 * 
+					 * System.out.println("Upload link is working proper.");
+					 * 
+					 * if (Driver.findElement(By.id("hrefDocError")).isDisplayed()) {
+					 * Driver.findElement(By.id("btnCancel")).click(); Thread.sleep(15000); } else {
+					 * Driver.findElement(By.id("btnSave")).click(); Thread.sleep(15000);
+					 * 
+					 * Driver.findElement(By.id("btnsaveandclose")).click(); Thread.sleep(15000); }
+					 * } catch (Exception g) { System.out.
+					 * println("There is no Upload Image display Please check Job manualy."); }
+					 */
 				}
 			}
 
 			try {
 				Driver.findElement(By.id("hlkRefresh")).click();
-				Thread.sleep(15000);
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 			} catch (Exception e) {
 				System.out.println("There is no job on Active Order from Test Data Excel.");
-				Thread.sleep(15000);
 			}
 
 			try {
-				Driver.findElement(By.id("hlkBackToScreen")).click();
-				Thread.sleep(15000);
+				Driver.findElement(By.id("WathcListTab")).click();
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 			} catch (Exception e) {
 				System.out.println("There is no job on Active Order from Test Data Excel.");
-				Thread.sleep(15000);
 			}
 		}
 	}
@@ -1586,13 +1420,13 @@ public class NetShipAll extends BaseInit {
 	public void BasicSearch0() throws Exception {
 		System.out.println("**********Basic Search**********");
 		Robot robot = new Robot();
+		WebDriverWait wait = new WebDriverWait(Driver, 50);
 		// Read data from Excel
 		// DEV
 		// File src0 = new
 		// File("D:\\Netlink_AJ\\TestAutomation\\ConnectDetailTesting\\ConnectEclipse\\NetShipAllScreen\\DataFiles\\NetShipBasicSearchDEV.xlsx");
 		// Staging
-		File src0 = new File(
-				"D:\\Netlink_AJ\\TestAutomation\\ConnectDetailTesting\\ConnectEclipse\\NetShipAllScreen\\DataFiles\\NetShipBasicSearchSTG.xlsx");
+		File src0 = new File(".\\DataFiles\\NetShipBasicSearchSTG.xlsx");
 		FileInputStream fis0 = new FileInputStream(src0);
 		Workbook workbook = WorkbookFactory.create(fis0);
 		Sheet sh0 = workbook.getSheet("GetQuote");
@@ -1603,11 +1437,13 @@ public class NetShipAll extends BaseInit {
 		System.out
 				.println("******************************************************************************************");
 		Driver.findElement(By.id("FindOptionTab")).click();
-		Thread.sleep(20000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//*[@ng-form=\"findForm\"]")));
 
 		Driver.findElement(By.id("btnContinue")).click();
-		Thread.sleep(20000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("errorid")));
 		String Message1 = Driver.findElement(By.id("errorid")).getText();
 
 		if (Message1.contains("Zipcode/Airport.")) {
@@ -1619,15 +1455,12 @@ public class NetShipAll extends BaseInit {
 			System.out.println(Message1);
 			System.out.println(
 					"******************************************************************************************");
-			Thread.sleep(5000);
 		}
 
 		Driver.findElement(By.id("txtPUZipCode")).clear();
-		Thread.sleep(5000);
 		Driver.findElement(By.id("txtPUZipCode")).sendKeys(formatter.formatCellValue(sh0.getRow(1).getCell(0)));
-		Thread.sleep(5000);
 		robot.keyPress(KeyEvent.VK_ENTER);
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 
 		Driver.findElement(By.id("txtDLZipCode")).clear();
 		Thread.sleep(5000);
