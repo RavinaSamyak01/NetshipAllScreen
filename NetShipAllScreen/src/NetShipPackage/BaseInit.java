@@ -8,11 +8,14 @@ import java.util.Date;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -21,15 +24,47 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public class BaseInit {
 	public static WebDriver Driver;
 
 	@BeforeSuite
 	public void beforeMethod() {
-		System.setProperty("webdriver.chrome.driver", "./Drivers/chromedriver.exe");
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+		WebDriverManager.chromedriver().setup();
 		ChromeOptions options = new ChromeOptions();
+		// options.addArguments("headless");
+		options.addArguments("headless");
+		options.addArguments("--incognito");
+		options.addArguments("--test-type");
+		options.addArguments("--no-proxy-server");
+		options.addArguments("--proxy-bypass-list=*");
+		options.addArguments("--disable-extensions");
+		options.addArguments("--no-sandbox");
+		options.addArguments("--headless");
+		options.addArguments("window-size=1366x788");
+		capabilities.setPlatform(Platform.ANY);
+		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 		Driver = new ChromeDriver(options);
-		Driver.manage().window().maximize();
+		// Default size
+		Dimension currentDimension = Driver.manage().window().getSize();
+		int height = currentDimension.getHeight();
+		int width = currentDimension.getWidth();
+		System.out.println("Current height: " + height);
+		System.out.println("Current width: " + width);
+		System.out.println("window size==" + Driver.manage().window().getSize());
+
+		// Set new size
+		Dimension newDimension = new Dimension(1366, 788);
+		Driver.manage().window().setSize(newDimension);
+
+		// Getting
+		Dimension newSetDimension = Driver.manage().window().getSize();
+		int newHeight = newSetDimension.getHeight();
+		int newWidth = newSetDimension.getWidth();
+		System.out.println("Current height: " + newHeight);
+		System.out.println("Current width: " + newWidth);
 	}
 
 	@BeforeTest

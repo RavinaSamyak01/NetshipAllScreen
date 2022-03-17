@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="con" path="org.testng.TESTNG_CONTAINER"/>
 	<classpathentry kind="lib" path="C:/Ravina/Software/Webdriver All Jar Files/activation-1.1.1.jar"/>
 	<classpathentry kind="lib" path="C:/Ravina/Software/Webdriver All Jar Files/ashot-1.5.4.jar"/>
@@ -160,5 +164,13 @@
 	<classpathentry kind="lib" path="C:/Ravina/Software/Webdriver All Jar Files/Jar/libs/guava-23.0.jar"/>
 	<classpathentry kind="lib" path="C:/Ravina/Software/Webdriver All Jar Files/Jar/libs/httpclient-4.5.3.jar"/>
 	<classpathentry kind="lib" path="C:/Ravina/Software/Webdriver All Jar Files/Jar/libs/httpcore-4.4.6.jar"/>
+	<classpathentry kind="lib" path="C:/Ravina/Software/Main Jar Files/dec-0.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Ravina/Software/Main Jar Files/httpclient5-5.1.3.jar"/>
+	<classpathentry kind="lib" path="C:/Ravina/Software/Main Jar Files/commons-lang-2.6.jar"/>
+	<classpathentry kind="lib" path="C:/Ravina/Software/Main Jar Files/commons-lang3-3.12.0.jar"/>
+	<classpathentry kind="lib" path="C:/Ravina/Software/Main Jar Files/commons-lang3-3.4.jar"/>
+	<classpathentry kind="lib" path="C:/Ravina/Software/Main Jar Files/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Ravina/Software/Main Jar Files/webdrivermanager-5.0.3.jar"/>
+	<classpathentry kind="lib" path="C:/Ravina/Software/Main Jar Files/httpcore5-5.1.3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
